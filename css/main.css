@@ -1,0 +1,10 @@
+.border-gradient:focus {
+	outline: none;
+	border: 1px solid rebeccapurple;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}

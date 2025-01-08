@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Interactive Card Details Form</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
+			rel="stylesheet" />
+		<link rel="stylesheet" href="./css/style.css" />
+		<link rel="stylesheet" href="./css/main.css" />
+	</head>
+	<body class="font-space">
+		<main class="wrapper flex flex-col md:flex-row">
+			<div class="leftPanel h-[220px] w-screen relative md:h-screen md:w-4/6">
+				<img
+					src="./images/bg-main-mobile.png"
+					alt="app gradient background"
+					class="w-full h-full lg:hidden" />
+				<img
+					src="./images/bg-main-desktop.png"
+					alt="app gradient background"
+					class="w-full h-full hidden lg:block" />
+				<div
+					class="backCard flex w-[295px] h-[160px] rounded-3xl absolute top-8 right-5 md:w-[300px] md:h-[170px] md:top-[450px] lg:top-[480px] md:right-[-50px] md:shadow-black md:shadow-2xl lg:w-[390px] lg:h-[220px] lg:left-[150px] xl:left-[310px] 2xl:left-[380px]">
+					<img src="./images/bg-card-back.png" alt="back of the credit card" />
+					<p
+						class="cvcNumberSpan absolute top-[68px] md:top-[72px] lg:top-[95px] right-10 md:right-14 text-xs md:text-base text-projectWhite tracking-[1.5px]">
+						000
+					</p>
+				</div>
+				<div
+					class="frontCard w-[295px] h-[160px] rounded-3xl absolute left-4 top-[118px] flex flex-col md:w-[300px] md:h-[200px] md:top-[240px] md:left-[35px] lg:w-[390px] lg:h-[250px] lg:left-[100px] xl:left-[260px] 2xl:left-[320px]">
+					<img
+						src="./images/bg-card-front.png"
+						alt="front of the credit card" />
+					<div class="cardFulfillment absolute w-full h-full p-4">
+						<div class="circles flex items-center space-x-3 px-3">
+							<div
+								class="filled w-[20px] h-[20px] md:w-[30px] md:h-[30px] lg:w-[47px] lg:h-[47px] border border-projectWhite bg-projectWhite rounded-full"></div>
+							<div
+								class="empty w-3 h-3 md:h-4 md:w-4 lg:w-5 lg:h-5 border border-projectWhite rounded-full"></div>
+						</div>
+						<div class="cardData text-projectWhite font-medium">
+							<p
+								class="cardNmuberSpan pt-8 pb-6 md:pb-4 text-[18px] tracking-[2px] text-center lg:pt-14 lg:text-2xl">
+								0000 0000 0000 0000
+							</p>
+							<div
+								class="flex justify-between text-xs md:text-md lg:text-base font-light px-4">
+								<p class="cardHolderSpan uppercase tracking-widest">
+									Cardholder Name
+								</p>
+								<div class="cardExpDate">
+									<span class="expMonthSpan">00</span>
+									/
+									<span class="expYearSpan">00</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				class="rightPanel flex flex-col py-[68px] px-6 md:justify-center md:items-center md:w-full">
+				<div class="flex flex-col formDetails">
+					<label
+						class="uppercase text-xs font-bold pb-2 tracking-[1.5px]"
+						for="cardholderName"
+						>cardholder name</label
+					>
+					<input
+						type="text"
+						id="cardholderName"
+						placeholder="e.g. Jane Appleseed"
+						class="border-gradient rounded-md border border-projectLightGreylishViolet font-semibold py-2 px-4 projectLightGreylishViolet focus:border transition-colors" />
+					<p
+						class="invisible errorMsg cardHolderErrMsg text-xs py-1 text-primaryError font-semibold pl-2">
+						Letters only
+					</p>
+					<label
+						class="uppercase text-xs font-bold pb-2 tracking-[1.5px]"
+						for="cardholderNumber"
+						>card number</label
+					>
+					<input
+						type="number"
+						id="cardholderNumber"
+						placeholder="e.g. 1234 5678 9123 0000"
+						oninput="if(this.value.length > 16) this.value = this.value.slice(0, 16);"
+						class="border-gradient rounded-md border border-projectLightGreylishViolet font-semibold py-2 px-4 projectLightGreylishViolet transition-colors" />
+					<p
+						class="invisible errorMsg cardNumberErrMsg text-xs py-1 text-primaryError font-semibold pl-2">
+						Numbers only
+					</p>
+					<div class="flex">
+						<div>
+							<label
+								class="uppercase text-xs font-bold pb-2 tracking-[1.5px]"
+								for="expDate"
+								>exp. date (mm/yy)</label
+							>
+							<div class="flex">
+								<div class="flex flex-col">
+									<input
+										type="number"
+										id="expMonth"
+										placeholder="MM"
+										oninput="if(this.value.length > 2) this.value = this.value.slice(0, 2);"
+										class="border-gradient rounded-md border w-20 mr-2 border-projectLightGreylishViolet py-2 px-4 font-semibold mt-2 transition-colors" />
+
+									<p
+										class="invisible errorMsg monthErrMsg text-xs py-1 text-primaryError font-semibold pl-2">
+										Can't be blank
+									</p>
+								</div>
+								<div class="flex flex-col">
+									<input
+										type="number"
+										id="expYear"
+										placeholder="YY"
+										oninput="if(this.value.length > 2) this.value = this.value.slice(0, 2);"
+										class="border-gradient rounded-md border w-20 border-projectLightGreylishViolet font-semibold py-2 px-4 projectLightGreylishViolet mt-2 mr-2 transition-colors" />
+									<p
+										class="invisible errorMsg yearErrMsg text-xs py-1 text-primaryError font-semibold pl-2">
+										Can't be blank
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="flex flex-col">
+							<label
+								class="uppercase text-xs font-bold pb-2 tracking-[1.5px]"
+								for="cvc"
+								>cvc</label
+							>
+							<input
+								type="number"
+								id="cvc"
+								placeholder="e.g. 123"
+								minlength="1"
+								maxlength="3"
+								oninput="if(this.value.length > 3) this.value = this.value.slice(0, 3);"
+								class="border-gradient rounded-md border border-projectLightGreylishViolet font-semibold w-[152px] py-2 px-4 projectLightGreylishViolet mt-2 transition-colors" />
+							<p
+								class="invisible errorMsg cvcErrMsg text-xs py-1 text-primaryError font-semibold pl-2">
+								Can't be blank
+							</p>
+						</div>
+					</div>
+					<button
+						class="confirmBtn bg-projectVeryDarkViolet text-xl text-projectWhite py-4 font-[400] rounded-lg md:mt-10 transition-colors hover:bg-primaryGradientTo">
+						Confirm
+					</button>
+				</div>
+				<div
+					class="confirmationPanel hidden mt-6 flex-col w-full p-4 justify-center items-center space-y-4">
+					<img
+						src="./images/icon-complete.svg"
+						alt="confirmation icon"
+						class="w-14 h-14w-14 mb-4" />
+					<p
+						class="text-3xl text-projectVeryDarkViolet uppercase font-semibold tracking-[2px]">
+						thank you!
+					</p>
+					<p class="text-projectDarkGreylishViolet font-semibold md:pb-6">
+						We'he added your card details
+					</p>
+					<button
+						class="refreshBtn bg-projectVeryDarkViolet text-xl text-projectWhite py-4 font-[400] w-full rounded-lg md:w-1/2 transition-colors hover:bg-primaryGradientTo">
+						Continue
+					</button>
+				</div>
+			</div>
+		</main>
+	</body>
+
+	<script src="./main.js"></script>
+</html>
